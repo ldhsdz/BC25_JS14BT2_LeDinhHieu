@@ -118,7 +118,7 @@ document.getElementById("btnIn").onclick = function () {
   }
   switch (chuc) {
     case 0:
-      if (dv == 0) {
+      if (chuc == 0) {
         chuc = " ";
         break;
       } else {
@@ -154,12 +154,20 @@ document.getElementById("btnIn").onclick = function () {
       break;
   }
   switch (dv) {
-    case 5:
-      if (chuc == 0) {
-        chuc = "Lam ";
+    case 0:
+      if (dv == 0) {
+        dv = " ";
         break;
       } else {
-        chuc = "Nam ";
+        dv = "Le ";
+        break;
+      }
+    case 5:
+      if (dv == 0) {
+        dv = "Lam ";
+        break;
+      }else {
+        dv = "Nam ";
         break;
       }
     case 1:
@@ -198,13 +206,22 @@ document.getElementById("btnInSV").onclick = function () {
     var SV3 = document.getElementById('txtSV3').value*1;
     var truong = document.getElementById('txtTruong').value*1;
     var xaNhat;
-    if(truong-SV1 > truong - SV2 && truong-SV1 > truong - SV3){
+    var toaDo1 = Math.abs(truong - SV1);
+    var toaDo2 = Math.abs(truong - SV2);
+    var toaDo3 = Math.abs(truong - SV3);
+    if(toaDo1 > toaDo2 && toaDo1 > toaDo3)
+    {
         xaNhat = "SV1 Xa Trường Đại Học Nhất";
-    }else if(truong - SV2 > truong -SV1 && truong - SV2 > truong - SV3){
+    }
+    else if(toaDo2 > toaDo1 && toaDo2 >toaDo3)
+    {
         xaNhat = "SV2 Xa Trường Đại Học Nhất";
-    }else if(truong - SV3 > truong - SV1 && truong - SV3 > truong - SV1){
+    }
+    else if(toaDo3 > toaDo1 && toaDo3 > toaDo2)
+    {
         xaNhat = "SV3 Xa Trường Đại Học Nhất"
-    }else{
+    }
+    else{
         "Sai ở Đâu đó !!!"
     }
     document.getElementById('txtInSV').innerHTML = xaNhat;
